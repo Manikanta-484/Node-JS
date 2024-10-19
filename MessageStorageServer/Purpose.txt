@@ -1,0 +1,18 @@
+Purpose: This code creates a simple Node.js server that listens on port 3000. It allows users to enter a message in a form on a webpage, and then it stores that message in a message.txt file on the server. Each new message is appended to the file, so you can store multiple messages without overwriting the previous ones.
+
+Routing:
+
+/ route: When the user visits the root of the server (http://localhost:3000/), they are presented with an HTML form that allows them to enter a message and submit it.
+/message route: When the form is submitted (with the method POST), the server captures the message from the form, decodes it, and appends it to message.txt.
+Handling Form Submission:
+
+When the form is submitted, the data is collected and processed in chunks.
+The message is extracted from the submitted data, decoded (to replace + with spaces), and saved to the file message.txt.
+The server then redirects the user back to the main page (/).
+File Handling:
+
+The fs.appendFileSync() function ensures that each new message is added to the file on a new line, preserving all previous entries.
+Explanation of Key Sections:
+http.createServer(): Creates an HTTP server and calls the rqListener function for each incoming request.
+Form Handling: The form uses the POST method, which sends data to the server, and the data is processed and written to message.txt.
+Routing: Based on the URL (/ or /message), the code decides whether to display the form or process the submitted data.
